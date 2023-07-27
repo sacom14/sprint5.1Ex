@@ -1,0 +1,163 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <script src="../models/course.js"></script>
+    <script src="../models/student.js"></script>
+
+    <script src="../controllers/courseController.js"></script>
+</head>
+
+<body>
+    <div id="allbody" class="container">
+        <h1>It Academy Courses</h1>
+        <div id="create-course-form">
+            <form class="row" id="courseForm">
+                <div class="col">
+                    <p class="col">
+                        <label for="nameInput" class="form-label col">Select the course</label>
+                        <select id="nameInput" class="form-control">
+                            <optgroup label="JavaScript">
+                                <!-- <option>Angular</option> -->
+                                <option>NodeJs</option>
+                                <option selected>Angular</option>
+                            </optgroup>
+                            <optgroup label="Others">
+                                <option>Java</option>
+                                <option>PHP</option>
+                            </optgroup>
+                        </select>
+                        <span id="vSeleccion"></span>
+                    </p>
+
+                </div>
+
+                <div class="col">
+                    <label for="hoursInput" class="form-label">Hours</label>
+                    <input type="text" class="form-control" id="hoursInput">
+                    <div id="errorHour" class="invalid-feedback">Invalid hour. Must have maxium 3 NUMBERS!
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="priceInput" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="priceInput">
+                    <div id="errorPrice" class="invalid-feedback">Invalid hour. Must have maxium 4 NUMBERS!
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="maxPersonInput" class="form-label">Max. Students</label>
+                    <input type="text" class="form-control" id="maxPersonInput" maxlength="2">
+                    <div id="errorMaxPerson" class="invalid-feedback">Invalid max number of students. The minium must be
+                        5 and maxium 15. Try again!
+                    </div>
+                </div>
+
+            </form>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary mb-2" onclick="submitCourse()">Create Course</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="create-student-form" style="display: none;">
+
+            <form class="row" id="studentForm">
+
+                <div class="col">
+                    <label for="studentName" class="form-label">Student name</label>
+                    <input type="text" class="form-control" id="studentName">
+                    <div id="errorName" class="invalid-feedback">Invalid name. Must have only LETTERS!
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="studentSurname" class="form-label">Student surname</label>
+                    <input type="text" class="form-control" id="studentSurname">
+                    <div id="errorSurname" class="invalid-feedback">Invalid surname. Must have only LETTERS!
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="studentDni" class="form-label">Student DNI</label>
+                    <input type="text" class="form-control" id="studentDni" maxlength="9">
+                    <div id="errorName" class="invalid-feedback">'Invalid DNI. This DNI does not exist. You need to use
+                        spanish DNI format. Becareful with the letter!
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="studentPopulation" class="form-label">Student population</label>
+                    <input type="text" class="form-control" id="studentPopulation">
+                </div>
+            </form>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary mb-2" onclick="submitStudentForm()">Add
+                        student</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-course-form" style="display: none;" class="text-center">
+
+            <table class="table text-center">
+                <div class="row text-center">
+                    <div class="col">
+                        <p id="courseName">course</p>
+                    </div>
+                </div>
+                <tbody id="course_list">
+                    <tr>
+                        <td id="courseHours">hours</td>
+                        <td id="coursePrice">price</td>
+                        <td id="maxPerson">max students</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div id="result-student-form" style="display: none;">
+
+            <div class="row text-center">
+                <div class="col create-student-output">
+                    <p id="titleStudentForm">STUDENTS</p>
+                </div>
+            </div>
+            <table id="showStudent" class="table text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">Student name</th>
+                        <th scope="col">Student surname</th>
+                        <th scope="col">Student DNI.</th>
+                        <th scope="col">Student poblation</th>
+                    </tr>
+                </thead>
+                <tbody id="student_list">
+                    <tr>
+                        <th scope="row">name</th>
+                        <td>surname</td>
+                        <td>dni</td>
+                        <td>poblation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    <script src="../validations/courseValidations.js"></script>
+    <script src="../validations/studentValidation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+</body>
